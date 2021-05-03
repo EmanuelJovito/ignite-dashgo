@@ -24,6 +24,7 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@types/faker": "^5.5.3",
     "@types/node": "^15.0.1",
     "@types/react": "^17.0.4",
     "faker": "^5.5.3",
