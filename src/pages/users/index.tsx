@@ -5,10 +5,11 @@ import { RiAddLine } from "react-icons/ri";
 import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
-import { useUsers } from "../../services/hooks/useUsers";
+import { getUsers, useUsers } from "../../services/hooks/useUsers";
 import { useState } from "react";
 import { queryClient } from "../../services/mirage/queryClient";
 import { api } from "../../services/api";
+import { GetServerSideProps } from "next";
 
 export default function UserList() {
   const [page, setPage] = useState(1)
