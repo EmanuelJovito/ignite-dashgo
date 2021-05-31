@@ -1,12 +1,11 @@
-import {useSession} from 'next-auth/client'
-import { BiError } from 'react-icons/bi'
-import { Avatar, Box, Flex, Icon, Text } from "@chakra-ui/react";
+import {useSession, signOut} from 'next-auth/client'
+import { Avatar, Box, Button, Flex, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverHeader, PopoverTrigger, Portal, Text } from "@chakra-ui/react";
 
 interface ProfileProps {
   showProfileData?: boolean 
 }
 
-export function Profile({ showProfileData = true }: ProfileProps) {
+export function Profile({ }: ProfileProps) {
   const [ session ] = useSession()
 
   return (
@@ -21,7 +20,21 @@ export function Profile({ showProfileData = true }: ProfileProps) {
 
         </Box>
 
-        <Avatar size="md" name={session.user.name} src={session.user.image}/>
+        <Popover>
+          <PopoverTrigger>
+            <Avatar size="md" name={session.user.name} src={session.user.image}/>
+          </PopoverTrigger>
+          <Portal>
+            <PopoverContent w="60" mr="1rem" align="center" bgColor="gray.700" border="none">
+            <PopoverArrow bgColor="gray.700" />
+              <PopoverHeader borderColor="gray.600" >Deseja desconectar?</PopoverHeader>
+              <PopoverCloseButton />
+              <PopoverBody>
+                <Button colorScheme="pink" onClick={() => signOut()}>Sair</Button>
+              </PopoverBody>
+            </PopoverContent>
+          </Portal>
+        </Popover>
         </>
       )}
     </Flex>
