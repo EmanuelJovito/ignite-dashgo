@@ -9,9 +9,10 @@ import { SidebarDrawerProvider } from '../contexts/SidebarDrawerContext'
 import { makeServer } from '../services/mirage'
 import { queryClient } from '../services/mirage/queryClient'
 
-if (process.env.NODE_ENV === 'development') {
-  makeServer()
-}
+makeServer()
+
+// if (process.env.NODE_ENV === 'development', 'deploy') {
+// }
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
